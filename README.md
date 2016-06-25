@@ -8,7 +8,7 @@ The data originally was from [Wilayah Administratif Indonesia](https://github.co
 1. Install it through pip.
         
         $ pip install django-indonesia-regions --upgrade
-2. Add "djindonesiaregions" to your INSTALLED_APPS setting like this.
+2. Add `djindonesiaregions` to your `INSTALLED_APPS` setting like this.
 
         INSTALLED_APPS = [
             ...
