@@ -5,7 +5,10 @@ import os
 import csv
 
 from django.db import migrations, models
+from django.db.utils import IntegrityError
 import django.db.models.deletion
+
+from djindonesiaregions.models import Province, Regency, District, Village
 
 CSV_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'csv'))
 
@@ -15,7 +18,7 @@ def populate_provinces(apps, schema_editor):
     with open(os.path.join(CSV_PATH, 'provinces.csv'), 'rb') as provinces:
         reader = csv.reader(provinces, delimiter=b',')
         for i in reader:
-            print(i)
+            Province.objects.get_or_create(province_id=i[0], name=i[1])
 
 
 def populate_regencies(apps, schema_editor):
@@ -23,7 +26,13 @@ def populate_regencies(apps, schema_editor):
     with open(os.path.join(CSV_PATH, 'regencies.csv'), 'rb') as regencies:
         reader = csv.reader(regencies, delimiter=b',')
         for i in reader:
-            print(i)
+            try:
+                province = Province.objects.get(province_id=i[1])
+            except Province.DoesNotExist:
+                print('Province %s not found.' % i[1])
+            else:
+                Regency.objects.get_or_create(name=i[2], regency_id=i[0],
+                                              province=province)
 
 
 def populate_districts(apps, schema_editor):
@@ -31,16 +40,28 @@ def populate_districts(apps, schema_editor):
     with open(os.path.join(CSV_PATH, 'districts.csv'), 'rb') as disticts:
         reader = csv.reader(disticts, delimiter=b',')
         for i in reader:
-            print(i)
+            try:
+                regency = Regency.objects.get(regency_id=i[1])
+            except Regency.DoesNotExist:
+                print('Regency %s not found.' % i[1])
+            else:
+                District.objects.get_or_create(name=i[2], district_id=i[0],
+                                               regency=regency)
 
 
 def populate_villages(apps, schema_editor):
     print('  Populating villages...')
-    print('  DONE.')
     with open(os.path.join(CSV_PATH, 'villages.csv'), 'rb') as villages:
         reader = csv.reader(villages, delimiter=b',')
         for i in reader:
-            print(i)
+            try:
+                district = District.objects.get(district_id=i[1])
+            except District.DoesNotExist:
+                print('District %s not found.' % i[1])
+            else:
+                Village.objects.get_or_create(name=i[2], village_id=i[0],
+                                              district=district)
+    print('  DONE.')
 
 
 class Migration(migrations.Migration):

@@ -13,9 +13,6 @@ class Province(models.Model):
     def __str__(self):
         return self.name
 
-    def save(self, **kwargs):
-        raise NotImplementedError
-
 
 @python_2_unicode_compatible
 class Regency(models.Model):
@@ -25,9 +22,6 @@ class Regency(models.Model):
 
     def __str__(self):
         return self.name
-
-    def save(self, **kwargs):
-        raise NotImplementedError
 
 
 @python_2_unicode_compatible
@@ -39,9 +33,6 @@ class District(models.Model):
     def __str__(self):
         return self.name
 
-    def save(self, **kwargs):
-        raise NotImplementedError
-
 
 @python_2_unicode_compatible
 class Village(models.Model):
@@ -51,6 +42,3 @@ class Village(models.Model):
 
     def __str__(self):
         return self.name
-
-    def save(self, **kwargs):
-        raise NotImplementedError
