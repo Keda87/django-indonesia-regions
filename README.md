@@ -5,14 +5,16 @@ Pluggable django apps provide indonesian regions data.
 The data originally was from [https://github.com/edwardsamuel/Wilayah-Administratif-Indonesia](https://github.com/edwardsamuel/Wilayah-Administratif-Indonesia)
 
 # Quick Start
-
-1. Add "djindonesiaregions" to your INSTALLED_APPS setting like this::
+1. Install it through pip.
+        
+        $ pip install django-indonesia-regions --upgrade
+2. Add "djindonesiaregions" to your INSTALLED_APPS setting like this.
 
         INSTALLED_APPS = [
             ...
             'djindonesiaregions',
         ]
-2. Run `python manage.py migrate` to create the region models and load the data.
+3. Run `python manage.py migrate` to create the region models and load the data.
 
 # ER Schema
 
