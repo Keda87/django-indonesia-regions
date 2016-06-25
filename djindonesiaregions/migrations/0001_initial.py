@@ -8,10 +8,9 @@ import os
 import django.db.models.deletion
 from django.db import migrations, models
 
-from djindonesiaregions.djindonesiaregions.models import Province, Regency, District, Village
+from djindonesiaregions.models import Province, Regency, District, Village
 
-CSV_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '../',
-                                        'djindonesiaregions/csv'))
+CSV_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'csv'))
 
 
 def populate_provinces(apps, schema_editor):
