@@ -1,6 +1,6 @@
 # django-indonesia-regions
 
-Pluggable django apps provide indonesian regions data. 
+Pluggable django apps provide indonesian regions database. 
 
 The data originally was from [Wilayah Administratif Indonesia](https://github.com/edwardsamuel/Wilayah-Administratif-Indonesia)
 
