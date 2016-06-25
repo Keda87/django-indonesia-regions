@@ -1,6 +1,6 @@
 from django.test import TestCase
 
-from djindonesiaregions.djindonesiaregions.models import Province, District, Regency, Village
+from djindonesiaregions.models import Province, District, Regency, Village
 
 
 class IndonesiaRegionsTestCase(TestCase):
