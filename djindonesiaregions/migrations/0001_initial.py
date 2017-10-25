@@ -15,16 +15,16 @@ CSV_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'csv'))
 
 def populate_provinces(apps, schema_editor):
     print('\n\n  Populating provinces...')
-    with open(os.path.join(CSV_PATH, 'provinces.csv'), 'rb') as provinces:
-        reader = csv.reader(provinces, delimiter=b',')
+    with open(os.path.join(CSV_PATH, 'provinces.csv')) as provinces:
+        reader = csv.reader(provinces)
         for i in reader:
             Province.objects.get_or_create(province_id=i[0], name=i[1])
 
 
 def populate_regencies(apps, schema_editor):
     print('  Populating regencies...')
-    with open(os.path.join(CSV_PATH, 'regencies.csv'), 'rb') as regencies:
-        reader = csv.reader(regencies, delimiter=b',')
+    with open(os.path.join(CSV_PATH, 'regencies.csv')) as regencies:
+        reader = csv.reader(regencies)
         for i in reader:
             try:
                 province = Province.objects.get(province_id=i[1])
@@ -37,8 +37,8 @@ def populate_regencies(apps, schema_editor):
 
 def populate_districts(apps, schema_editor):
     print('  Populating districts...')
-    with open(os.path.join(CSV_PATH, 'districts.csv'), 'rb') as disticts:
-        reader = csv.reader(disticts, delimiter=b',')
+    with open(os.path.join(CSV_PATH, 'districts.csv')) as disticts:
+        reader = csv.reader(disticts)
         for i in reader:
             try:
                 regency = Regency.objects.get(regency_id=i[1])
@@ -51,8 +51,8 @@ def populate_districts(apps, schema_editor):
 
 def populate_villages(apps, schema_editor):
     print('  Populating villages...')
-    with open(os.path.join(CSV_PATH, 'villages.csv'), 'rb') as villages:
-        reader = csv.reader(villages, delimiter=b',')
+    with open(os.path.join(CSV_PATH, 'villages.csv')) as villages:
+        reader = csv.reader(villages)
         for i in reader:
             try:
                 district = District.objects.get(district_id=i[1])
@@ -116,3 +116,4 @@ class Migration(migrations.Migration):
         migrations.RunPython(populate_districts),
         migrations.RunPython(populate_villages),
     ]
+
