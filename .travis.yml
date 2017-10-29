@@ -11,7 +11,7 @@ env:
     - DJANGO="django>=1.9,<1.10"
     - DJANGO="django>=1.10,<2.0"
 install:
-    - "pip install django-indonesia-regions"
+    - "pip install ."
     - "pip install ${DJANGO}"
 script:
     - "python manage.py test"
