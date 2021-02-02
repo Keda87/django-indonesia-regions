@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.db.models import PROTECT
-from djago.utils import version
+from django.utils import version
 
 # fix import error for django 1.5 and up
 vtuple = version.get_complete_version()
