@@ -9,7 +9,7 @@ vtuple = version.get_complete_version()
 if vtuple[0]< 2 and vtuple[1]<6:
     from django.utils.encoding import python_2_unicode_compatible
 else:
-    from six import python_2_unicoce_compatible
+    from six import python_2_unicode_compatible
 
 
 @python_2_unicode_compatible
