@@ -2,7 +2,14 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.db.models import PROTECT
-from django.utils.encoding import python_2_unicode_compatible
+from django.utils import version
+
+# fix import error for django 1.5 and up
+vtuple = version.get_complete_version()
+if vtuple[0]< 2 and vtuple[1]<6:
+    from django.utils.encoding import python_2_unicode_compatible
+else:
+    from six import python_2_unicode_compatible
 
 
 @python_2_unicode_compatible
