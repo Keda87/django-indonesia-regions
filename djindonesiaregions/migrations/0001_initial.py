@@ -14,7 +14,7 @@ CSV_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'csv'))
 
 
 def populate_provinces(apps, schema_editor):
-    print('\n\n  Populating provinces...')
+    print('  Populating provinces...')
     with open(os.path.join(CSV_PATH, 'provinces.csv')) as provinces:
         reader = csv.reader(provinces)
         for i in reader:
