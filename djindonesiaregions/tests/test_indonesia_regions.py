@@ -20,4 +20,3 @@ class IndonesiaRegionsTestCase(TestCase):
         self.assertEqual(district.name, 'KUNIR')
         village = Village.objects.get(village_id='1103041012')
         self.assertEqual(village.name, 'SILOLO')
-
